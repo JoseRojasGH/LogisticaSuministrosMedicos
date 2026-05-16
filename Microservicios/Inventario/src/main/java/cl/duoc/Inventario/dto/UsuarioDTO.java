@@ -1,4 +1,4 @@
-package cl.duoc.Usuario.dto;
+package cl.duoc.Inventario.dto;
 
 import lombok.*;
 
@@ -7,8 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 public class UsuarioDTO {
     private Integer id;
-    private String nombre;
-    private String contraseña;
     private String correo;
     private String rol;
 }

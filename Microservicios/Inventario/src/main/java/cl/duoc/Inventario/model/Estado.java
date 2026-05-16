@@ -1,4 +1,4 @@
-package cl.duoc.Usuario.model;
+package cl.duoc.Inventario.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,12 +7,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "rol")
-public class Rol {
+@Table(name = "estado")
+public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String disponibilidad;
 }
