@@ -1,10 +1,10 @@
-package main.java.cl.duoc.Usuario.model;
+package cl.duoc.Usuario.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@NoargsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "usuario")

@@ -1,4 +1,4 @@
-package main.java.cl.duoc.Usuario.controller;
+package cl.duoc.Usuario.controller;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import cl.duoc.Usuario.model.Usuario;
 import cl.duoc.Usuario.service.UsuarioService;
 import cl.duoc.Usuario.dto.UsuarioDTO;
 
-@RestController
+@RestController 
 @RequestMapping("api/v1/usuarios")
 public class UsuarioController {
 
@@ -27,7 +27,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/id/{id}")
-    public ResposeEntity<Usuario> buscarporId(@PathVariable Integer id){
+    public ResponseEntity<Usuario> buscarporId(@PathVariable Integer id){
         try {
             Usuario usuario = usuarioService.buscarporId(id);
             return ResponseEntity.ok(usuario);

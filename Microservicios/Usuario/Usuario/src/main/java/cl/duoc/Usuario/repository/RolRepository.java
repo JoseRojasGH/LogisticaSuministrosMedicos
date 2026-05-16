@@ -1,4 +1,4 @@
-package main.java.cl.duoc.Usuario.repository;
+package cl.duoc.Usuario.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

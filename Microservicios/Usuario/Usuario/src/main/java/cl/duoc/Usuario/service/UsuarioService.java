@@ -1,12 +1,12 @@
-package main.java.cl.duoc.Usuario.service;
+package cl.duoc.Usuario.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.cl.duoc.Usuario.model.Usuario;
-import main.java.cl.duoc.Usuario.repository.UsuarioRepository;
+import cl.duoc.Usuario.model.Usuario;
+import cl.duoc.Usuario.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -35,7 +35,7 @@ public class UsuarioService {
         if (!usuarioRepository.existsById(id)) {
             throw new RuntimeException("Usuario no existe");
         }
-        usuarioRepository.delete(usuarioExistente);
+        usuarioRepository.delete(usuarioRepository.findById(id).get());
     }
 
     public void actualizarContraseñaUsuario(Integer id, String nuevaContraseña){
