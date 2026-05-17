@@ -9,14 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class UsuarioDTO {
-
-    private Integer idUsuario;
-
-    private String nombre;
-
+    private Integer id;
     private String correo;
-
     private String rol;
-
-
 }

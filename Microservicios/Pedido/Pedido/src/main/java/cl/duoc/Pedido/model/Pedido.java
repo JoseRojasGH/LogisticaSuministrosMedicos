@@ -14,19 +14,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Pedido")
+@Table(name = "pedido")
 
-public class PedidoModel {
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPedido ;
+    private Integer id;
 
     @Column(nullable = false)
-    private Integer cantidad ;
+    private Integer cantidad;
 
     @Column(nullable = false)
-    private Integer precioTotal ;
+    private Integer precioTotal;
 
 
     @Column(name = "producto_id", nullable = false)

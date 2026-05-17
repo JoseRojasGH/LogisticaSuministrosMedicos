@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import cl.duoc.Pedido.dto.UsuarioDTO;
 
-@FeignClient(name = "usuarioms", url = "http://localhost:8085")
+@FeignClient(name = "Usuario", url = "http://localhost:8081")
 public interface UsuarioClient {
 
-    @GetMapping("/api/v1/usuarios/{id}")
+    @GetMapping("/api/v1/usuarios/dto/{id}")
     UsuarioDTO obtenerUsuario(@PathVariable Integer id);
 
 }

@@ -1,4 +1,4 @@
-package cl.duoc.Despacho.Dto;
+package cl.duoc.Despacho.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,17 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class ClienteDTO {
-
-    private Integer idCliente;
-
-    private String rut ;
-
-    private String nombre ;
-
-    private String direccion ;
-
-    private String comuna ;
-
-    private String correo ;
+    private Integer id;
+    private String rut;
+    private String direccion;
 
 }

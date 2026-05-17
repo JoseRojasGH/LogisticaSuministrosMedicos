@@ -30,7 +30,8 @@
             "mainClass": "cl.duoc.Proveedor.ProveedorApplication",
             "projectName": "Proveedor",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=60607 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Proveedor"
         },
         {
             "type": "java",
@@ -39,6 +40,48 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "cl.duoc.Producto.ProductoApplication",
             "projectName": "Producto",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=50440 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Producto"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ClienteApplication<Cliente>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Cliente.ClienteApplication",
+            "projectName": "Cliente",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DespachoApplication<Despacho>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Despacho.DespachoApplication",
+            "projectName": "Despacho",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=61504 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Despacho"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DevolucionApplication<Devolucion>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Devolucion.DevolucionApplication",
+            "projectName": "Devolucion",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PedidoApplication<Pedido>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Pedido.PedidoApplication",
+            "projectName": "Pedido",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
