@@ -44,6 +44,16 @@
             "request": "launch",
             "mainClass": "cl.duoc.Usuarios.UsuariosApplication",
             "projectName": "Usuarios"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ClienteApplication<Cliente>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Cliente.ClienteApplication",
+            "projectName": "Cliente",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
