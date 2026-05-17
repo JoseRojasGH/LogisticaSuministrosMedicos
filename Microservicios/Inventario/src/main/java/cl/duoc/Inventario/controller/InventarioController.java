@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cl.duoc.Inventario.dto.InventarioDTO;
 import cl.duoc.Inventario.dto.InventarioDetalleDTO;
-import cl.duoc.Inventario.dto.UsuarioDTO;
 import cl.duoc.Inventario.model.Inventario;
 import cl.duoc.Inventario.service.InventarioService;
 import org.springframework.web.bind.annotation.PostMapping;

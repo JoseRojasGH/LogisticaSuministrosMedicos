@@ -1,36 +1,31 @@
-package cl.duoc.Proveedor.Model;
+package cl.duoc.Proveedor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity
-@Table(name = "proveedores")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "proveedor")
 public class Proveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-
-    private Long id;
+    @Column(nullable = false)
     private String rut;
-    private String nombre;
-    private String direccion;
-    private String telefono;
-    private String email;
 
-    public void setEmaill(String email) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    @Column(nullable = false)
+    private String razon_social;
+
+    @Column(nullable = false)
+    private String correo_contacto;
+
     
+    @Column(name = "usuario_id", nullable = false)
+    private Integer usuarioId;    
     
 
 }
