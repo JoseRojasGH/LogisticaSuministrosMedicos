@@ -10,5 +10,4 @@ import cl.duoc.Usuario.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByCorreo(String correo);
 
-    void updateContraseñaById(Integer id, String nuevaContraseña);
 }

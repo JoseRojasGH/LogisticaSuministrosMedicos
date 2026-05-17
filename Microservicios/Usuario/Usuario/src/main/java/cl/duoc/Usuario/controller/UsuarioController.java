@@ -78,8 +78,6 @@ public class UsuarioController {
         Usuario usuario = usuarioService.buscarporId(id);
         UsuarioDTO usuarioDTO = new UsuarioDTO(
             usuario.getId(),
-            usuario.getNombre(),
-            usuario.getContraseña(),
             usuario.getCorreo(),
             usuario.getRol().getNombre()
         );

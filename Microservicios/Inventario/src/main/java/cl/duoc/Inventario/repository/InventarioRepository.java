@@ -8,5 +8,5 @@ import cl.duoc.Inventario.model.Inventario;
 
 @Repository
 public interface InventarioRepository extends JpaRepository<Inventario, Integer> {
-    void updateStockById(Integer id, int nuevoStock);
+
 }

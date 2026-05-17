@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.duoc.Inventario.dto.InventarioDTO;
 import cl.duoc.Inventario.dto.InventarioDetalleDTO;
+import cl.duoc.Inventario.dto.UsuarioDTO;
 import cl.duoc.Inventario.model.Inventario;
 import cl.duoc.Inventario.service.InventarioService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,4 +69,17 @@ public class InventarioController {
         }
     }
 
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<InventarioDTO> obtenerInventarioDTO(@PathVariable Integer id){
+        Inventario inventario = inventarioService.buscarPorId(id);
+        InventarioDTO inventarioDTO = new InventarioDTO(
+            inventario.getId(),
+            inventario.getStock_actual(),
+            inventario.getEstado().getDisponibilidad()
+        );
+        return ResponseEntity.ok(inventarioDTO);
+    }
+
 }
+
+

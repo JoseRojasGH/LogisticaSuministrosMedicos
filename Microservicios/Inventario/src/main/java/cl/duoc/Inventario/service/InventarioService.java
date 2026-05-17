@@ -17,6 +17,7 @@ public class InventarioService {
 
     @Autowired
     private UsuarioClient usuarioClient;
+    
     public List<Inventario> listarInventarios(){
         return inventarioRepository.findAll();
     }
@@ -38,7 +39,9 @@ public class InventarioService {
         if (!inventarioRepository.existsById(id)) {
             throw new RuntimeException("Inventario no existe");
         }
-        inventarioRepository.updateStockById(id, nuevoStock);
+        Inventario inventario = inventarioRepository.findById(id).get();
+        inventario.setStock_actual(nuevoStock);
+        inventarioRepository.save(inventario);
     }
 
     public InventarioDetalleDTO obtenerDetalleInventario(Integer id){

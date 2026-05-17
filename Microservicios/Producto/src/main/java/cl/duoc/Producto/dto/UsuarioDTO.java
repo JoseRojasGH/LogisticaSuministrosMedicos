@@ -1,4 +1,4 @@
-package cl.duoc.Usuario.dto;
+package cl.duoc.Producto.dto;
 
 import lombok.*;
 
