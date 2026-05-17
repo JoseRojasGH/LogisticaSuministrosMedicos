@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ClientesApplication",
+            "request": "launch",
+            "mainClass": "ClientesApplication",
+            "projectName": "Clientes"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ClientesApplication",
+            "request": "launch",
+            "mainClass": "cl.duoc.Clientes.ClientesApplication",
+            "projectName": "Clientes"
+        },
+        {
+            "type": "java",
+            "name": "DevolucionApplication",
+            "request": "launch",
+            "mainClass": "cl.duoc.Devolucion.DevolucionApplication",
+            "projectName": "Devolucion"
+        },
+        {
+            "type": "java",
+            "name": "ProveedorApplication",
+            "request": "launch",
+            "mainClass": "cl.duoc.Proveedor.ProveedorApplication",
+            "projectName": "Proveedor"
+        },
+        {
+            "type": "java",
+            "name": "UsuariosApplication",
+            "request": "launch",
+            "mainClass": "cl.duoc.Usuarios.UsuariosApplication",
+            "projectName": "Usuarios"
+        }
+    ]
+}
