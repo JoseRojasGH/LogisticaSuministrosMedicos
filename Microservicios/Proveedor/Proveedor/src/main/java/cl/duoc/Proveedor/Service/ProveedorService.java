@@ -1,53 +1,79 @@
-package cl.duoc.Proveedor.Service;
+package cl.duoc.Proveedor.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import cl.duoc.Proveedor.Model.Proveedor;
-import cl.duoc.Proveedor.Repository.ProveedorRepository;
+import cl.duoc.Proveedor.client.UsuarioClient;
+import cl.duoc.Proveedor.dto.ProveedorDetalleDTO;
+import cl.duoc.Proveedor.dto.UsuarioDTO;
+import cl.duoc.Proveedor.model.Proveedor;
+import cl.duoc.Proveedor.repository.ProveedorRepository;
 
 @Service
 public class ProveedorService {
 
-    private final ProveedorRepository proveedorRepository;
+    @Autowired
+    private ProveedorRepository proveedorRepository;
 
     @Autowired
-    public ProveedorService(ProveedorRepository proveedorRepository) {
-        this.proveedorRepository = proveedorRepository;
-    }
+    private UsuarioClient usuarioClient;
 
-    public List<Proveedor> findAll() {
+    public List<Proveedor> listarProveedores() {
         return proveedorRepository.findAll();
     }
 
-    public Proveedor findById(Long id) {
+    public Proveedor buscarPorId(Integer id) {
         return proveedorRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Proveedor no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
     }
 
-    public Proveedor save(Proveedor proveedor) {
+    public Proveedor buscarPorRut(String rut) {
+        return proveedorRepository.findByRut(rut)
+                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+    }
+
+    public Proveedor crearProveedor(Proveedor proveedor) {
+        UsuarioDTO usuario = usuarioClient.obtenerUsuario(proveedor.getUsuarioId());
+
+        if (usuario == null) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
         return proveedorRepository.save(proveedor);
     }
 
-    public Proveedor update(Long id, Proveedor proveedorData) {
-        Proveedor existente = findById(id);
-        existente.setNombre(proveedorData.getNombre());
-        existente.setRut(proveedorData.getRut());
-        existente.setEmail(proveedorData.getEmail());
-        existente.setTelefono(proveedorData.getTelefono());
-        existente.setDireccion(proveedorData.getDireccion());
+    public Proveedor actualizarProveedor(Integer id, Proveedor proveedorActualizado) {
+        Proveedor existente = proveedorRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+
+        existente.setRut(proveedorActualizado.getRut());
+        existente.setRazon_social(proveedorActualizado.getRazon_social());
+        existente.setCorreo_contacto(proveedorActualizado.getCorreo_contacto());
+        existente.setUsuarioId(proveedorActualizado.getUsuarioId());
+
         return proveedorRepository.save(existente);
     }
 
-    public void delete(Long id) {
-        if (!proveedorRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Proveedor no encontrado");
+    public ProveedorDetalleDTO obtenerDetalleProveedor(Integer id) {
+        Proveedor proveedor = proveedorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+
+        UsuarioDTO usuario = usuarioClient.obtenerUsuario(proveedor.getUsuarioId());
+
+        if(usuario == null) {
+            throw new RuntimeException("Usuario no encontrado");
         }
-        proveedorRepository.deleteById(id);
+
+        ProveedorDetalleDTO dto = new ProveedorDetalleDTO();
+        dto.setId(proveedor.getId());
+        dto.setRut(proveedor.getRut());
+        dto.setRazon_social(proveedor.getRazon_social());
+        dto.setCorreo_contacto(proveedor.getCorreo_contacto());
+        dto.setUsuario(usuario);
+
+        return dto;
     }
+
 
 }

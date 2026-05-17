@@ -60,20 +60,20 @@ public class ProductoService {
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
     }
 
-    public List<Producto> buscarPorNombre(String nombre) {
+    public List<Producto> buscarPorNombre(String nombre) {        
         return productoRepository.findByNombre(nombre);
     }
 
     public Double buscarPrecioPorId(Integer id){
         Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-        return productoRepository.findPrecioById(producto.getId());
+        return producto.getPrecio();
     }
 
     public Date buscarFechaVencimientoPorId(Integer id){
         Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-        return productoRepository.findFechaVencimientoById(producto.getId());
+        return producto.getFecha_vencimiento();
     }
 
     public void eliminarProducto(Integer id) {
@@ -84,11 +84,12 @@ public class ProductoService {
     }
 
     public void actualizarPrecioProducto(Integer id, Double nuevoPrecio) {
-        if(productoRepository.existsById(id)){
-            productoRepository.updatePrecioById(id, nuevoPrecio);
-        } else {
+        if(!productoRepository.existsById(id)){
             throw new RuntimeException("Producto no encontrado");
         }
+        Producto producto = productoRepository.findById(id).get();
+        producto.setPrecio(nuevoPrecio);
+        productoRepository.save(producto);
     }
 
     public ProductoDetalleDTO obtenerDetalleProducto(Integer id) {

@@ -1,14 +1,14 @@
-package cl.duoc.Devolucion.Repository;
+package cl.duoc.Devolucion.repository;
 
-import java.util.Optional;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import cl.duoc.Devolucion.Model.Devolucion;
+import cl.duoc.Devolucion.model.Devolucion;
 
 @Repository
 public interface DevolucionRepository extends JpaRepository<Devolucion, Integer> {
-    Optional<Devolucion> findByIdDespacho(String idDespacho);
-
+    List<Devolucion> findByFecha(Date fecha_devolucion);
 }

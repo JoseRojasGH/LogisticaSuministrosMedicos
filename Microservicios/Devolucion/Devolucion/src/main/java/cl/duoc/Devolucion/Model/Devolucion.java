@@ -1,37 +1,31 @@
-package cl.duoc.Devolucion.Model;
+package cl.duoc.Devolucion.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "devoluciones")
+@Table(name = "devolucion")
 public class Devolucion {
 
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
-    private String idDespacho;
+    private Date fechaDevolucion;
 
     @Column(nullable = false)
-    private String idCliente;
-
-    @Column(nullable = false)
-    private LocalDate fechaDevolucion;
-
     private String motivo;
-    private Integer cantidad;
+
+    @Column(name = "despacho_id", nullable = false)
+    private Integer despachoId;
+
+    @Column(name = "cliente_id", nullable = false)
+    private Integer clienteId;
+
 }
