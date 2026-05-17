@@ -42,6 +42,8 @@ public class UsuarioService {
         if (!usuarioRepository.existsById(id)) {
             throw new RuntimeException("Usuario no existe");
         }
-        usuarioRepository.updateContraseñaById(id, nuevaContraseña);
+        Usuario usuario = usuarioRepository.findById(id).get();
+        usuario.setContraseña(nuevaContraseña);
+        usuarioRepository.save(usuario);
     }
 }

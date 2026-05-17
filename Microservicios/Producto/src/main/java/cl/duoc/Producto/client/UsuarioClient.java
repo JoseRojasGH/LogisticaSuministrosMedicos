@@ -1,9 +1,9 @@
-package cl.duoc.Inventario.client;
+package cl.duoc.Producto.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-import cl.duoc.Inventario.dto.UsuarioDTO;
+import cl.duoc.Producto.dto.UsuarioDTO;
 
 @FeignClient(name = "Usuario", url = "http://localhost:8081")
 public interface UsuarioClient {
