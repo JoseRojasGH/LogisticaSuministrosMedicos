@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import cl.duoc.Devolucion.dto.DespachoDTO;
 
-@FeignClient(name = "Despacho", url = "http://localhost:8085")
+@FeignClient(name = "Despacho", url = "http://localhost:8084")
 public interface DespachoClient {
     @GetMapping("api/v1/despachos/dto/{id}")
     DespachoDTO obtenerDespacho(@PathVariable("id") Integer id);

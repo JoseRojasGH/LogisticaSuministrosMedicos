@@ -1,22 +1,21 @@
 package cl.duoc.Pedido.repository;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import cl.duoc.Pedido.model.PedidoModel;
+import cl.duoc.Pedido.model.Pedido;
 
 @Repository
-public interface PedidoRepository extends JpaRepository<PedidoModel, Integer>{
+public interface PedidoRepository extends JpaRepository<Pedido, Integer>{
 
-    List<PedidoModel> findByproductoId(Integer clienteId);
+    Pedido findByProductoId(Integer productoId);
 
-    List<PedidoModel> findBydespachoId(Integer clienteId);
+    Pedido findByDespachoId(Integer despachoId);
 
-    List<PedidoModel> findByclienteId(Integer clienteId);
+    Pedido findByClienteId(Integer clienteId);
 
-    List<PedidoModel> findByusuarioId(Integer clienteId);
+    Pedido findByUsuarioId(Integer usuarioId);
 
   
 

@@ -11,14 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class DespachoDTO {
-
-    private Integer idDespacho;
-
-    private String direccion;
-
+    private Integer id;
     private String nombreConductor;
-
     private Date fechaEntrega;
-
-
 }

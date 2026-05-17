@@ -9,18 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class ClienteDTO {
-
-        private Integer idCliente;
-
+    private Integer id;
     private String rut;
-
-    private String nombre;
-
     private String direccion;
-
-    private String comuna;
-
-    private String correo;
 
 }
 
