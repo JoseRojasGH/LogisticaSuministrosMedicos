@@ -1,57 +1,23 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "ClientesApplication",
-            "request": "launch",
-            "mainClass": "ClientesApplication",
-            "projectName": "Clientes"
-        },
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "ClientesApplication",
-            "request": "launch",
-            "mainClass": "cl.duoc.Clientes.ClientesApplication",
-            "projectName": "Clientes"
-        },
-        {
-            "type": "java",
-            "name": "DevolucionApplication",
-            "request": "launch",
-            "mainClass": "cl.duoc.Devolucion.DevolucionApplication",
-            "projectName": "Devolucion"
-        },
-        {
-            "type": "java",
-            "name": "ProveedorApplication",
-            "request": "launch",
-            "mainClass": "cl.duoc.Proveedor.ProveedorApplication",
-            "projectName": "Proveedor"
-        },
-        {
-            "type": "java",
-            "name": "UsuariosApplication",
-            "request": "launch",
-            "mainClass": "cl.duoc.Usuarios.UsuariosApplication",
-            "projectName": "Usuarios"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-ClienteApplication<Cliente>",
+            "name": "Spring Boot-InventarioApplication<Inventario>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "cl.duoc.Cliente.ClienteApplication",
-            "projectName": "Cliente",
+            "mainClass": "cl.duoc.Inventario.InventarioApplication",
+            "projectName": "Inventario",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=56992 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Inventario"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-UsuarioApplication<Usuario>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.duoc.Usuario.UsuarioApplication",
+            "projectName": "Usuario",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
