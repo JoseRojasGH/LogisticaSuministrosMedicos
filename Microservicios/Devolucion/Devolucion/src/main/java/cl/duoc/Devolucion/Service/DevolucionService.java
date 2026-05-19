@@ -1,7 +1,5 @@
 package cl.duoc.Devolucion.service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -37,22 +35,6 @@ public class DevolucionService {
                 .orElseThrow(() -> new RuntimeException("Devolucion no encontrada"));
     }
 
-    public List<Devolucion> buscarPorFecha(Date fecha_devolucion){
-
-        List<Devolucion> devolucionesPorFecha = new ArrayList<>();
-
-        for (Devolucion d : devolucionRepository.findAll()) {
-            if (d.getFechaDevolucion().equals(fecha_devolucion)) {
-                devolucionesPorFecha.add(d);
-            }
-        }
-
-        if(devolucionesPorFecha.isEmpty()){
-            throw new RuntimeException("Devolucion no encontrada");
-        }
-
-        return devolucionesPorFecha;
-    }
 
     public Devolucion crearDevolucion(Devolucion devolucion) {
         ClienteDTO cliente = clienteClient.obtenerCliente(devolucion.getClienteId());

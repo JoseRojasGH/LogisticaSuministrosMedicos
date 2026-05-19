@@ -10,7 +10,7 @@ import cl.duoc.Pedido.dto.UsuarioDTO;
 public interface UsuarioClient {
 
     @GetMapping("/api/v1/usuarios/dto/{id}")
-    UsuarioDTO obtenerUsuario(@PathVariable Integer id);
+    UsuarioDTO obtenerUsuario(@PathVariable("id") Integer id);
 
 }
 

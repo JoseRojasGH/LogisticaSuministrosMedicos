@@ -9,7 +9,7 @@ import cl.duoc.Pedido.dto.ClienteDTO;
 @FeignClient(name = "Cliente", url = "http://localhost:8086")
 public interface ClienteClient {
     @GetMapping("/api/v1/clientes/dto/{id}")
-    ClienteDTO obtenerCliente(@PathVariable Integer id);
+    ClienteDTO obtenerCliente(@PathVariable("id") Integer id);
 
 }
 

@@ -43,8 +43,12 @@ public class DespachoService {
     }
 
     
-    public Despacho buscarPorCliente(Integer clienteId) {
-        return despachoRepository.findByClienteId(clienteId);
+    public List<Despacho> buscarPorCliente(Integer clienteId) {
+        List<Despacho> despachos = despachoRepository.findByClienteId(clienteId);
+        if(despachos.isEmpty()){
+            throw new RuntimeException("No se encontraron despachos para el cliente");
+        }
+        return despachos;
     }
 
     public Despacho actualizar(Integer id, Despacho despacho) {

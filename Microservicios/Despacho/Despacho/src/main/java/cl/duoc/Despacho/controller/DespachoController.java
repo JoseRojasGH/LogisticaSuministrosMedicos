@@ -51,13 +51,12 @@ public class DespachoController {
     }
 
     @GetMapping("/cliente/{clienteId}")
-    public ResponseEntity<Despacho> buscarPorCliente(@PathVariable Integer clienteId) {
-        try {
-            Despacho despacho = service.buscarPorCliente(clienteId);
-            return ResponseEntity.ok(despacho);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<List<Despacho>> buscarPorCliente(@PathVariable Integer clienteId) {
+        List<Despacho> despachos = service.buscarPorCliente(clienteId);
+        if(despachos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(despachos);
         }
     }
 
