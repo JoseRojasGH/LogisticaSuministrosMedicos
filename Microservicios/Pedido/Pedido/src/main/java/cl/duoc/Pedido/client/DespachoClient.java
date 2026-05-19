@@ -8,7 +8,7 @@ import cl.duoc.Pedido.dto.DespachoDTO;
 
 @FeignClient(name = "Despacho", url = "http://localhost:8084")
 public interface DespachoClient {
-    @GetMapping("/api/v1/despacho/dto/{id}")
-    DespachoDTO obtenerDespacho(@PathVariable Integer id);
+    @GetMapping("/api/v1/despachos/dto/{id}")
+    DespachoDTO obtenerDespacho(@PathVariable("id") Integer id);
 
 }

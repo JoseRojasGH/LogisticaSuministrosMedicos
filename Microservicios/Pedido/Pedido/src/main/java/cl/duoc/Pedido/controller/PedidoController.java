@@ -17,7 +17,7 @@ import cl.duoc.Pedido.model.Pedido;
 import cl.duoc.Pedido.service.PedidoService;
 
 @RestController
-@RequestMapping("/api/v1/pedido")
+@RequestMapping("/api/v1/pedidos")
 public class PedidoController {
 
     @Autowired
@@ -48,46 +48,43 @@ public class PedidoController {
     }
 
     @GetMapping("/producto/{productoId}")
-    public ResponseEntity<Pedido> buscarPorProducto(@PathVariable Integer productoId) {
-        try {
-            Pedido pedido = service.buscarPorProducto(productoId);
-            return ResponseEntity.ok(pedido);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<List<Pedido>> buscarPorProducto(@PathVariable Integer productoId) {
+        List<Pedido> pedidos = service.buscarPorProducto(productoId);
+        if(pedidos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(pedidos);
         }
     }
 
     @GetMapping("/despacho/{despachoId}")
-    public ResponseEntity<Pedido> buscarPorDespacho(@PathVariable Integer despachoId) {
-        try {
-            Pedido pedido = service.buscarPorDespacho(despachoId);
-            return ResponseEntity.ok(pedido);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<List<Pedido>> buscarPorDespacho(@PathVariable Integer despachoId) {
+        List<Pedido> pedidos = service.buscarPorDespacho(despachoId);
+        if(pedidos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(pedidos);
         }
     }
 
     @GetMapping("/cliente/{clienteId}")
-    public ResponseEntity<Pedido> buscarPorCliente(@PathVariable Integer clienteId) {
-        try {
-            Pedido pedido = service.buscarPorCliente(clienteId);
-            return ResponseEntity.ok(pedido);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<List<Pedido>> buscarPorCliente(@PathVariable Integer clienteId) {
+        List<Pedido> pedidos = service.buscarPorCliente(clienteId);
+        if(pedidos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(pedidos);
         }
+    
     }
 
     @GetMapping("/usuario/{usuarioId}")
-    public ResponseEntity<Pedido> buscarPorUsuario(@PathVariable Integer usuarioId) {
-        try {
-            Pedido pedido = service.buscarPorUsuario(usuarioId);
-            return ResponseEntity.ok(pedido);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<List<Pedido>> buscarPorUsuario(@PathVariable Integer usuarioId) {
+        List<Pedido> pedidos = service.buscarPorUsuario(usuarioId);
+        if(pedidos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(pedidos);
         }
     }
 

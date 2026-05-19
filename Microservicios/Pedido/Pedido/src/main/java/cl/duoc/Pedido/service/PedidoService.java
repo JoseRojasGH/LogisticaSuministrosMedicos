@@ -78,20 +78,37 @@ public class PedidoService {
 
     }
 
-    public Pedido buscarPorCliente(Integer clienteId) {
-        return repository.findByClienteId(clienteId);
+    public List<Pedido> buscarPorCliente(Integer clienteId) {
+        List<Pedido> pedidos = repository.findByClienteId(clienteId);
+        if(pedidos.isEmpty()){
+            throw new RuntimeException("No se encontraron pedidos para el cliente");
+        }
+        return pedidos;
     }
 
-    public Pedido buscarPorUsuario(Integer usuarioId) {
-        return repository.findByUsuarioId(usuarioId);
+    public List<Pedido> buscarPorUsuario(Integer usuarioId) {
+        List<Pedido> pedidos = repository.findByUsuarioId(usuarioId);
+        if(pedidos.isEmpty()){
+            throw new RuntimeException("No se encontraron pedidos para el usuario");
+        }
+        return pedidos;
+    }
+    
+
+    public List<Pedido> buscarPorProducto(Integer productoId) {
+        List<Pedido> pedidos = repository.findByProductoId(productoId);
+        if(pedidos.isEmpty()){
+            throw new RuntimeException("No se encontraron pedidos para el producto");
+        }
+        return pedidos;
     }
 
-    public Pedido buscarPorProducto(Integer productoId) {
-        return repository.findByProductoId(productoId);
-    }
-
-    public Pedido buscarPorDespacho(Integer despachoId) {
-        return repository.findByDespachoId(despachoId);
+    public List<Pedido> buscarPorDespacho(Integer despachoId) {
+        List<Pedido> pedidos = repository.findByDespachoId(despachoId);
+        if(pedidos.isEmpty()){
+            throw new RuntimeException("No se encontraron pedidos para el despacho");
+        }
+        return pedidos;
     }
 
     public Pedido actualizar(Integer id, Pedido pedido) {

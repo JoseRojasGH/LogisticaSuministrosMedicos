@@ -8,7 +8,7 @@ import cl.duoc.Pedido.dto.ProductoDTO;
 
 @FeignClient(name = "Producto", url = "http://localhost:8083")
 public interface ProductoClient {
-    @GetMapping("/api/v1/producto/dto/{id}")
-    ProductoDTO obtenerProducto(@PathVariable Integer id);
+    @GetMapping("/api/v1/productos/dto/{id}")
+    ProductoDTO obtenerProducto(@PathVariable("id") Integer id);
 
 }

@@ -1,6 +1,6 @@
 package cl.duoc.Devolucion.controller;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +44,7 @@ public class DevolucionController {
         }
     }
 
-    @GetMapping("/fecha/{fecha}")
-    public ResponseEntity<List<Devolucion>> getDevolucionByFecha(@PathVariable Date fecha) {
-        List<Devolucion> devolucionesPorFecha = devolucionService.buscarPorFecha(fecha);
-        if(devolucionesPorFecha.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(devolucionesPorFecha);
-    }
+    
 
     @PostMapping
     public ResponseEntity<Devolucion> createDevolucion(@RequestBody Devolucion devolucion) {
