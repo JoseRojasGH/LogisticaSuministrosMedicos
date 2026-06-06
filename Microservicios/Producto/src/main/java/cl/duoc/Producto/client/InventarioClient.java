@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import cl.duoc.Producto.dto.InventarioDTO;
 
-@FeignClient(name = "Inventario", url = "http://localhost:8082")
+@FeignClient(name = "Inventario")
 public interface InventarioClient {
     @GetMapping("/api/v1/inventarios/dto/{id}")
     InventarioDTO obtenerInventario(@PathVariable("id") Integer id);
