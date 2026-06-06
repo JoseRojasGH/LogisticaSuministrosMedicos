@@ -1,5 +1,6 @@
 package cl.duoc.Inventario.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,10 +9,12 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "inventario")
+@Schema(description = "Representa el inventario del sistema")
 public class Inventario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "identificar unico del producto", examples = {"1","2"})
     private Integer id;
 
     @Column(nullable = false)

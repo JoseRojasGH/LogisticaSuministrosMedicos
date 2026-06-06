@@ -14,6 +14,10 @@ import cl.duoc.Inventario.dto.InventarioDTO;
 import cl.duoc.Inventario.dto.InventarioDetalleDTO;
 import cl.duoc.Inventario.model.Inventario;
 import cl.duoc.Inventario.service.InventarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,10 +25,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/v1/inventarios")
 public class InventarioController {
+    
     @Autowired
     private InventarioService inventarioService;
 
     @GetMapping
+    @Operation(summary = "busca todos los clientes")
+    @ApiResponses(value ={ @ApiResponse(responseCode = "200" , description = "producto encontrados"),
+                        @ApiResponse(responseCode = "204" , description = "no Hay stock disponible"),
+                        @ApiResponse(responseCode = "500" , description = "error intento de servidor"),
+})
     public ResponseEntity<List<Inventario>> listarInventarios(){
         List<Inventario> inventarios = inventarioService.listarInventarios();
         if(inventarios.isEmpty()){

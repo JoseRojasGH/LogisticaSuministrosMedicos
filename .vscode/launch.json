@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UsuarioApplication",
+            "request": "launch",
+            "mainClass": "cl.duoc.Usuario.UsuarioApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-InventarioApplication<Inventario>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
