@@ -8,16 +8,22 @@ import org.springframework.web.bind.annotation.*;
 
 import cl.duoc.Usuario.model.Usuario;
 import cl.duoc.Usuario.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import cl.duoc.Usuario.dto.UsuarioDTO;
 
 @RestController 
 @RequestMapping("api/v1/usuarios")
+@Tag(name = "Usuario", description = "Operacion sobre los usuarios del sistema")
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping
+    @Operation(summary = "Lista todos los usuarios en el sistema")
     public ResponseEntity<List<Usuario>> listarUsuarios(){
         List<Usuario> usuarios = usuarioService.listarUsuarios();
         if(usuarios.isEmpty()){
@@ -27,6 +33,13 @@ public class UsuarioController {
     }
 
     @GetMapping("/id/{id}")
+    @Operation(summary = "Busca un usuario por ID",
+                description = "Retorna un usuario segun el ID Proporcionado")
+    @ApiResponses(value=  {@ApiResponse(responseCode = "200", description = "Usuario encontrado"),
+                          @ApiResponse(responseCode = "404",description = "Usuario no encontrado"),
+                          @ApiResponse(responseCode = "500",description = "Error interno del servidor")
+                          } 
+                )
     public ResponseEntity<Usuario> buscarporId(@PathVariable Integer id){
         try {
             Usuario usuario = usuarioService.buscarporId(id);
