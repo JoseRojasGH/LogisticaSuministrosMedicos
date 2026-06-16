@@ -31,20 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-# Ignorar carpetas de compilación de Maven y Gradle
-target/
-build/
-bin/
-out/
-
-# Ignorar archivos compilados sueltos
-*.class
-
-# Ignorar configuraciones locales de VS Code y el sistema
-.settings/
-.classpath
-.project
-.factorypath
-.vscode/
-.DS_Store
-Thumbs.db
