@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.duoc.Usuario.dto.UsuarioDTO;
 import cl.duoc.Usuario.model.Usuario;
 import cl.duoc.Usuario.service.UsuarioService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import cl.duoc.Usuario.dto.UsuarioDTO;
 
 @RestController 
 @RequestMapping("api/v1/usuarios")

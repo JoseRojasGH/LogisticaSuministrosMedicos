@@ -1,0 +1,57 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: Cliente
+              uri: lb://Cliente
+              predicates:
+                - Path=/api/v1/clientes/**
+
+            - id: Usuario
+              uri: lb://Usuario
+              predicates:
+                - Path=/api/v1/usuarios/**
+
+            - id: Proveedor
+              uri: lb://Proveedor
+              predicates:
+                - Path=/api/v1/proveedores/**
+
+            - id: Inventario
+              uri: lb://Inventario
+              predicates:
+                - Path=/api/v1/inventarios/**
+
+            - id: Producto
+              uri: lb://Producto
+              predicates:
+                - Path=/api/v1/productos/**
+
+            - id: Despacho
+              uri: lb://Despacho
+              predicates:
+                - Path=/api/v1/despachos/**
+
+            - id: Devolucion
+              uri: lb://Devolucion
+              predicates:
+                - Path=/api/v1/devoluciones/**
+
+            - id: Pedido
+              uri: lb://Pedido
+              predicates:
+                - Path=/api/v1/pedidos/**
