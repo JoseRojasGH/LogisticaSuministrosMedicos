@@ -72,12 +72,15 @@ public class DevolucionController {
             return ResponseEntity.badRequest().build();
         }
     
+    }
+    
     @PutMapping("/{id}")
     @Operation(summary = "Actualizar una devolución")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Devolución actualizada"),
         @ApiResponse(responseCode = "404", description = "Devolución no encontrada"),
         @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
     public ResponseEntity<Devolucion> actualizar(@PathVariable Integer id,
             @RequestBody Devolucion devolucion) {
 
