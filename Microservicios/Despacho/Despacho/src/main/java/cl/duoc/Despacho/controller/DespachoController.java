@@ -68,7 +68,7 @@ public class DespachoController {
         }
     }
 
-    @GetMapping("/despacho/{clienteId}")
+    @GetMapping("/cliente/{clienteId}")
       @Operation(summary = "Busca un Despacho por el cliente", 
                 description = "Retorna un Despacho según el Cliente proporcionado")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Cliente Encontrado"),
@@ -92,8 +92,13 @@ public class DespachoController {
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Despacho Creado"),
                             @ApiResponse(responseCode = "500", description = "Error Interno del Servidor")
     })
-    public ResponseEntity<Despacho> createDespacho(@RequestBody Despacho despacho){
-        return ResponseEntity.ok(service.guardar(despacho));
+    public ResponseEntity<Despacho> guardar(@RequestBody Despacho despacho) {
+        try {
+            Despacho nuevo = service.guardar(despacho);
+            return ResponseEntity.ok(nuevo);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 
