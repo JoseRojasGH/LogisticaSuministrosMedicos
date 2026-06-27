@@ -58,7 +58,11 @@ public class ProveedorController {
 
     @PostMapping
     public ResponseEntity<Proveedor> crear(@RequestBody Proveedor proveedor) {
-        return ResponseEntity.ok(proveedorService.crearProveedor(proveedor));
+        try {
+            return ResponseEntity.ok(proveedorService.crearProveedor(proveedor));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{id}")

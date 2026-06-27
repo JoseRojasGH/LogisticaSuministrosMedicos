@@ -48,9 +48,12 @@ public class DevolucionController {
 
     @PostMapping
     public ResponseEntity<Devolucion> createDevolucion(@RequestBody Devolucion devolucion) {
-        return ResponseEntity.ok(devolucionService.crearDevolucion(devolucion));
+        try {
+            return ResponseEntity.ok(devolucionService.crearDevolucion(devolucion));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
-
     @PutMapping("/{id}")
     public ResponseEntity<Devolucion> updateDevolucion(@PathVariable Integer id, @RequestBody Devolucion devolucion) {
          try {

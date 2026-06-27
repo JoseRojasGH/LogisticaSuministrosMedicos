@@ -75,7 +75,11 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto){
-        return ResponseEntity.ok(productoService.crearProducto(producto));
+        try {
+            return ResponseEntity.ok(productoService.crearProducto(producto));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 

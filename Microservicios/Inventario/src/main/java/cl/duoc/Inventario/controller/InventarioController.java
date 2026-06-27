@@ -55,7 +55,11 @@ public class InventarioController {
 
     @PostMapping()
     public ResponseEntity<Inventario> crearInventario(@RequestBody Inventario inventario){
-        return ResponseEntity.ok(inventarioService.crearInventario(inventario));
+        try {
+            return ResponseEntity.ok(inventarioService.crearInventario(inventario));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PatchMapping("/{id}/{nuevoStock}")

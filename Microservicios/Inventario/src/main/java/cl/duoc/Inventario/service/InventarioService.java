@@ -27,6 +27,9 @@ public class InventarioService {
         if (usuarioDTO == null) {
             throw new RuntimeException("Usuario no existe");
         }
+
+        
+
         return inventarioRepository.save(inventario);
     }
 

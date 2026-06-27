@@ -47,52 +47,51 @@ public class PedidoController {
         }
     }
 
+    
     @GetMapping("/producto/{productoId}")
     public ResponseEntity<List<Pedido>> buscarPorProducto(@PathVariable Integer productoId) {
-        List<Pedido> pedidos = service.buscarPorProducto(productoId);
-        if(pedidos.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(pedidos);
+        try {
+            return ResponseEntity.ok(service.buscarPorProducto(productoId));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
     @GetMapping("/despacho/{despachoId}")
     public ResponseEntity<List<Pedido>> buscarPorDespacho(@PathVariable Integer despachoId) {
-        List<Pedido> pedidos = service.buscarPorDespacho(despachoId);
-        if(pedidos.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(pedidos);
+        try {
+            return ResponseEntity.ok(service.buscarPorDespacho(despachoId));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
     @GetMapping("/cliente/{clienteId}")
     public ResponseEntity<List<Pedido>> buscarPorCliente(@PathVariable Integer clienteId) {
-        List<Pedido> pedidos = service.buscarPorCliente(clienteId);
-        if(pedidos.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(pedidos);
+        try {
+            return ResponseEntity.ok(service.buscarPorCliente(clienteId));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
-    
     }
 
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Pedido>> buscarPorUsuario(@PathVariable Integer usuarioId) {
-        List<Pedido> pedidos = service.buscarPorUsuario(usuarioId);
-        if(pedidos.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(pedidos);
+        try {
+            return ResponseEntity.ok(service.buscarPorUsuario(usuarioId));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping
     public ResponseEntity<Pedido> guardar(@RequestBody Pedido pedido) {
-        return ResponseEntity.ok(service.guardar(pedido));
+        try {
+            return ResponseEntity.ok(service.guardar(pedido));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
 

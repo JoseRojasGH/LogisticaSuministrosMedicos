@@ -1,5 +1,12 @@
 package cl.duoc.Proveedor.dto;
 
-public class UsuarioDTO {
+import lombok.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UsuarioDTO {
+    private Integer id;
+    private String correo;
+    private String rol;
 }

@@ -52,11 +52,11 @@ public class DespachoController {
 
     @GetMapping("/cliente/{clienteId}")
     public ResponseEntity<List<Despacho>> buscarPorCliente(@PathVariable Integer clienteId) {
-        List<Despacho> despachos = service.buscarPorCliente(clienteId);
-        if(despachos.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
+        try {
+            List<Despacho> despachos = service.buscarPorCliente(clienteId);
             return ResponseEntity.ok(despachos);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
