@@ -14,13 +14,15 @@ public class Inventario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "identificar unico del producto", examples = {"1","2"})
+    @Schema(description = "identificador unico del inventario", examples = {"1","2"})
     private Integer id;
 
     @Column(nullable = false)
+    @Schema(description = "unidades disponibles en stock", examples = {"15","1"})
     private int stock_actual;
 
     @Column(name = "usuario_id", nullable = false)
+    @Schema(description = "Identificador del usuario asociado al inventario", example = "1")
     private Integer usuarioId;
 
     @ManyToOne

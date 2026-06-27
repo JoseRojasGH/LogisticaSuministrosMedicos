@@ -30,6 +30,102 @@ public class InventarioController {
     private InventarioService inventarioService;
 
     @GetMapping
+    @Operation(summary = "Busca todos inventario")
+    @ApiResponses(value ={ @ApiResponse(responseCode = "200" , description = "inventarios encontrados"),
+                        @ApiResponse(responseCode = "204" , description = "no hay inventario disponible"),
+                        @ApiResponse(responseCode = "500" , description = "error intento de servidor"),
+})
+    public ResponseEntity<List<Inventario>> listarInventarios(){
+        List<Inventario> inventarios = inventarioService.listarInventarios();
+        if(inventarios.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(inventarios);
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Busca un inventario por ID",
+                description = "Retorna un inventario segun el ID Proporcionado")
+    @ApiResponses(value=  {@ApiResponse(responseCode = "200", description = "Inventario encontrado"),
+                          @ApiResponse(responseCode = "404",description = "Inventario no encontrado"),
+                          @ApiResponse(responseCode = "500",description = "Error interno del servidor")
+                          } 
+                )
+    public ResponseEntity<Inventario> obtenerInventario(@PathVariable Integer id){
+        try {
+            Inventario inventario = inventarioService.buscarPorId(id);
+            return ResponseEntity.ok(inventario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    @Operation(summary = "Crea un nuevo inventario",
+                description = "Agrega un nuevo inventario al sistema con la información proporcionada")
+    @ApiResponses(value=  {@ApiResponse(responseCode = "200", description = "Inventario creado exitosamente"),
+                          @ApiResponse(responseCode = "400",description = "Solicitud inválida"),
+                          @ApiResponse(responseCode = "500",description = "Error interno del servidor")
+                          } 
+                )
+    public ResponseEntity<Inventario> crearInventario(@RequestBody Inventario inventario){
+        try {
+            return ResponseEntity.ok(inventarioService.crearInventario(inventario));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PatchMapping("/{id}/{nuevoStock}")
+    @Operation(summary = "Actualiza el stock actual",
+                description = "Modifica el stock según el ID proporcionado y el nuevo stock")
+    @ApiResponses(value=  {@ApiResponse(responseCode = "200", description = "Stock actualizado exitosamente"),
+                          @ApiResponse(responseCode = "404",description = "Inventario no encontrado"),
+                          @ApiResponse(responseCode = "500",description = "Error interno del servidor")
+                          } 
+                )
+    public ResponseEntity<Void> actualizarStock(@PathVariable Integer id, @PathVariable Integer nuevoStock){
+        try {
+            inventarioService.actualizarStockPorId(id, nuevoStock);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{id}/detalle")
+    public ResponseEntity<InventarioDetalleDTO> obtenerDetalleInventario(@PathVariable Integer id){
+        try {
+            InventarioDetalleDTO detalle = inventarioService.obtenerDetalleInventario(id);
+            return ResponseEntity.ok(detalle);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/dto/{id}")
+    public ResponseEntity<InventarioDTO> obtenerInventarioDTO(@PathVariable Integer id){
+        Inventario inventario = inventarioService.buscarPorId(id);
+        InventarioDTO inventarioDTO = new InventarioDTO(
+            inventario.getId(),
+            inventario.getStock_actual(),
+            inventario.getEstado().getDisponibilidad()
+        );
+        return ResponseEntity.ok(inventarioDTO);
+    }
+
+}
+
+/*
+
+@RestController
+@RequestMapping("/api/v1/inventarios")
+public class InventarioController {
+    
+    @Autowired
+    private InventarioService inventarioService;
+
+    @GetMapping
     @Operation(summary = "busca todos los clientes")
     @ApiResponses(value ={ @ApiResponse(responseCode = "200" , description = "producto encontrados"),
                         @ApiResponse(responseCode = "204" , description = "no Hay stock disponible"),
@@ -55,11 +151,7 @@ public class InventarioController {
 
     @PostMapping()
     public ResponseEntity<Inventario> crearInventario(@RequestBody Inventario inventario){
-        try {
-            return ResponseEntity.ok(inventarioService.crearInventario(inventario));
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
-        }
+        return ResponseEntity.ok(inventarioService.crearInventario(inventario));
     }
 
     @PatchMapping("/{id}/{nuevoStock}")
@@ -95,4 +187,4 @@ public class InventarioController {
 
 }
 
-
+*/
